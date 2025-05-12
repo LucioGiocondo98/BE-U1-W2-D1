@@ -9,12 +9,12 @@ public class ContoOnline extends ContoCorrente {
     }
 
     @Override
-    public void preleva(double x) {
-        if (x <= maxPrelievo) {
-            super.preleva(x);
-        } else {
-            System.out.println("Errore: il prelievo supera il limite massimo consentito di " + maxPrelievo);
+    public void preleva(double x) throws BancaException {
+        if (x > maxPrelievo) {
+            throw new BancaException("il prelievo non è disponibile");
         }
+        super.preleva(x);
+
     }
 
     public void stampaSaldo() {
